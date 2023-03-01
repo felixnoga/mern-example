@@ -1,0 +1,24 @@
+# Pull the Node image from Docker Hub
+FROM node:14-slim as build
+
+# Setting Working Directory
+WORKDIR /usr/app
+
+# Copying only package.json
+COPY package*.json ./
+
+# Install Dependencies
+RUN npm install
+
+# Copy rest of the code to container
+COPY . .
+RUN npm run build
+EXPOSE 80
+FROM nginx:alpine
+COPY --from=build /usr/app/build /usr/share/nginx/html
+EXPOSE 80
+# Run the React app
+CMD ["nginx", "-g", "daemon off;"]
+
+
+
