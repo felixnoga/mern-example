@@ -23,7 +23,9 @@ En la carpeta ui, en el archivo .env, rellenar la variable REACT_APP_BACKEND_URI
 ## 6.
 
 En la carpeta ui. Hacer el build de docker: `sudo docker build -t frontend -f Dockerfile.dev .`
-##7.
+
+## 7.
+
 Subir la imagen del frontend a ECR. Crear el servicio del frontend en APP Runner con esta imagen (el frontend usa el puerto 80, configurar en APP Runner). No hace falta configurar variables de entorno en APP Runner.
 
 ## 8.
